@@ -1,11 +1,13 @@
 from fastapi import FastAPI, File, UploadFile
-from typing import List
-import os
 import MyAwsS3
+from pydantic import BaseModel
 
 app = FastAPI()
 
-bucket_name = ""
+bucket_name = 'makeanything'
+
+class Item(BaseModel):
+    filename : str
 
 @app.get("/")
 def read_root():
@@ -15,6 +17,10 @@ def read_root():
 def test_api():
     return "hi"
 
+@app.post("/fastapi-test2")
+def test_api(example:str):
+    return example
+
 @app.post("/upload-file")
-def upload_file(file_name:str):
-    MyAwsS3.upload_file(file_name, bucket_name)
+def upload_file(item : Item):
+    MyAwsS3.upload_file(item.filename, bucket_name)
