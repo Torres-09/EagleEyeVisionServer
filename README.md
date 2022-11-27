@@ -7,3 +7,9 @@
 - install awscli
 - aws configure 명령어로
 - aws 정보들 입력해준다.
+
+## 기본 세팅
+- pip install fastapi
+- pip install "uvicorn[standard]"
+- pip3 install boto3
+- apt-get install python3
