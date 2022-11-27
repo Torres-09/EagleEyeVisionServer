@@ -37,19 +37,15 @@ def upload_file(item: Item):
     return "okay"
 
 
-@app.post("/upload-fileV2")
-def upload_file(item: Item, file: UploadFile):
-    hi = dummy_function(item.filename)
-    MyAwsS3.upload_file(item.filename, bucket_name)
-    os.remove(hi)
-    return "okay"
-
-
 @app.post("/upload-fileV3")
 def upload_file(
-        filename: str = Path
+        filename: str = Path,
+        filename1: str = Path,
+        file: str = Path,
+        file1: str = Path
 ):
-    MyAwsS3.upload_file(filename, bucket_name, "test.jpg")
+    MyAwsS3.upload_file(filename, bucket_name, file)
+    MyAwsS3.upload_file(filename1, bucket_name, file1)
     return "okay"
 
 
