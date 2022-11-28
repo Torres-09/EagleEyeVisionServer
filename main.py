@@ -56,4 +56,10 @@ def upload_file(
         os.remove(resultVideo_url)
 
     MyAwsS3.upload_file(filename1, bucket_name, file1)
+
+    if os.path.exists(filename):
+        os.remove(filename)
+    if os.path.exists(filename1):
+        os.remove(filename1)
+
     return "okay"
