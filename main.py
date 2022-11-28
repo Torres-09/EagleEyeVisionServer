@@ -49,10 +49,10 @@ def upload_file(
 ):
     # ( 연기를 제거하려는 원본영상의 경로, 최종 결과물이 저장되는 경로, 파일 이름(확장자포함) )
     # 원본영상은 java 서버에서 제거 , 영상처리 후 결과물은 여기서 제거해야 함.
-    # desmoke.desmoke_video(filename, resultVideo_url, "result.mp4")
+    desmoke.desmoke_video(filename, resultVideo_url, "result.mp4")
     MyAwsS3.upload_file(resultVideo_url, bucket_name, file)
 
-    if os.path.exists(resultVideo_url)
+    if os.path.exists(resultVideo_url):
         os.remove(resultVideo_url)
 
     MyAwsS3.upload_file(filename1, bucket_name, file1)
