@@ -5,7 +5,9 @@ import math
 import heapq
 import numpy as np
 import os
-
+#here
+import tensorflow as tf
+graph = tf.get_default_graph()
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 import glob
 from PIL import Image
@@ -135,7 +137,9 @@ def desmoke_video(video_path, path1, result_name):
             Frame = preprocess_cv2_image(Frame)
             x_test = np.concatenate((Frame, t), axis=2)
             x_test = np.reshape(x_test, (1, img_size, img_size, 4))
-            generated_images = g.predict(x=x_test)
+            with graph.as_default():
+                generated_images = g.predict(x=x_test)
+            #generated_images = g.predict(x=x_test)
             de_test = deprocess_image(generated_images)
             de_test = np.reshape(de_test, (img_size, img_size, 3))
             de_test = cv2.resize(de_test, (w, h))
