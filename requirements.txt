@@ -5,7 +5,7 @@ astor==0.8.1
 backcall==0.2.0
 cached-property==1.5.2
 caldav==0.1.4
-certifi==2021.5.30
+certifi==2022.12.7
 cffi @ file:///C:/ci/cffi_1625831763871/work
 charset-normalizer==2.0.12
 colorama==0.4.5
